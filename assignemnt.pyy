@@ -1,0 +1,164 @@
+# Name: Jason Shin
+# Period: AM
+# Disneyland Trip Budget Calculator
+
+print()
+print()
+#Part 1 — Introduce Your Program
+print("Welcome to the Disneyland Trip Calculator!")
+print("Answer a few questions about your trip.")
+print("Then I will estimate your total cost!")
+print()
+print()
+
+#Part 2 - Ask for Basic Trip Information such as Number of Disneyland Park Days, Number of Hotel Nights
+name=input("What is your full name? ")
+number_of_people=int(input("How many people are going on the trip? "))
+number_of_days=int(input("How many days will you be at Disneyland? (2-5 days): "))
+number_of_nights=int(input("How many nights will you stay at a hotel? "))
+
+#I added the ticket prices for the Park Hopper tickets to make it easier for the user to know how much they will be spending on tickets.
+print()
+print()
+print("Here are the prices for the Park Hopper tickets:")
+print("2-Day Park Hopper Ticket: $435")
+print("3-Day Park Hopper Ticket: $535")
+print("4-Day Park Hopper Ticket: $600")
+print("5-Day Park Hopper Ticket: $655")
+print()
+print()
+
+#float is when you want to use a decimal number.
+#I used float for the ticket prices, food, souvenirs, hotel, gas, and parking because those are all decimal numbers.
+
+#Part 3 - Calculating Total Park Hopper Ticket Cost
+park_hopper_price = float(input("What is the price of the Park Hopper ticket? $"))
+total_ticket_cost = park_hopper_price * number_of_people
+
+#Part 4 - Calculating Total Food Cost
+food_cost_per_person = float(input("How much will ONE person spend on food each day? $"))
+food_cost_one_person = food_cost_per_person * number_of_days
+total_food_cost = food_cost_one_person * number_of_people
+
+#Part 5 - Calculating Total Souvenir Cost
+sovenirs_cost_per_person = float(input("How much will ONE person spend on souvenirs? $"))
+total_souvenirs_cost = sovenirs_cost_per_person * number_of_people
+
+#Part 6 - Calculating Total Hotel Cost
+hotel_cost_per_night = float(input("How much will ONE night at the hotel cost? $"))
+hotelrooms_needed = int(input("How many hotel rooms will you need? "))
+one_room_total_cost = hotel_cost_per_night * number_of_nights
+total_hotel_cost = one_room_total_cost * hotelrooms_needed
+
+#Part 7 - Calculating Round Trip Distance
+one_way_distance = float(input("How many miles away from Disneyland do you live? "))
+vehicle_mpg = float(input("How many miles per gallon does your vehicle get? "))
+round_trip_distance = one_way_distance * 2
+
+#Part 8 - Calculating Total Gas Cost
+gas_price = float(input("What is today's price of regular gas per gallon? $"))
+gallons_needed = round_trip_distance / vehicle_mpg
+total_gas_cost = gallons_needed * gas_price
+
+#Part 9 - Calculating Total Parking Cost
+parking_cost = float(input("How much will parking cost at Disneyland? $"))
+total_parking_cost = parking_cost * number_of_days
+
+#Part 10 - Computing everything together to get the total cost.
+final_total_cost = total_ticket_cost + total_food_cost + total_souvenirs_cost + total_hotel_cost + total_gas_cost + total_parking_cost
+
+#Part 11 - Calculating Cost Per Person and Cost Per Day
+cost_per_person = final_total_cost / number_of_people
+cost_per_day = final_total_cost / number_of_days
+
+#Part 12 - Ask for the budget and calculate the difference between the budget and the final total cost.
+trip_budget = float(input("How much money does your group have available for the Disneyland trip? $"))
+budget_difference = trip_budget - final_total_cost
+
+#The receipt starts here:
+print()
+print("====================================")
+print("       DISNEYLAND TRIP REPORT")
+print("====================================")
+print("Name:", name)
+print("Number of people:", number_of_people)
+print("Number of park days:", number_of_days)
+print("Number of hotel nights:", number_of_nights)
+print()
+
+print("====================================")
+print("       PARK HOPPER TICKETS")
+print("====================================")
+
+#The f makes it an f-string. It lets you put variables directly inside the text using { }.
+#and .2f shows exactly 2 numbers after the decimal.
+print(f"Park Hopper Price Per Person: ${park_hopper_price:,.2f}")
+print(f"Total Ticket Cost: ${total_ticket_cost:,.2f}")
+print()
+
+print("====================================")
+print("       FOOD EXPENSES")
+print("====================================")
+print(f"Food Cost Per Person Per Day: ${food_cost_per_person:,.2f}")
+print(f"Total Food Cost: ${total_food_cost:,.2f}")
+print()
+
+print("====================================")
+print("       SOUVENIR EXPENSES")
+print("====================================")
+print(f"Souvenir Cost Per Person: ${sovenirs_cost_per_person:,.2f}")
+print(f"Total Souvenir Cost: ${total_souvenirs_cost:,.2f}")
+print()
+
+print("====================================")
+print("       HOTEL EXPENSES")
+print("====================================")
+print(f"Hotel Cost Per Night: ${hotel_cost_per_night:,.2f}")
+print(f"Number of Hotel Rooms Needed: {hotelrooms_needed}")
+print(f"Total Hotel Cost: ${total_hotel_cost:,.2f}")
+print()
+
+print("====================================")
+print("       GAS EXPENSES")
+print("====================================")
+print(f"One-Way Distance: {one_way_distance} miles")
+print(f"Vehicle MPG: {vehicle_mpg}")
+print(f"Round-Trip Distance: {round_trip_distance} miles")
+print(f"Gas Price Per Gallon: ${gas_price:,.2f}")
+print(f"Gallons Needed: {gallons_needed}")
+print(f"Total Gas Cost: ${total_gas_cost:,.2f}")
+print()
+
+print("====================================")
+print("       PARKING EXPENSES")
+print("====================================")
+print(f"Parking Cost Per Day: ${parking_cost:,.2f}")
+print(f"Total Parking Cost: ${total_parking_cost:,.2f}")
+print()
+
+print("====================================")
+print("       TRIP SUMMARY")
+print("====================================")
+print(f"Final Total Cost: ${final_total_cost:,.2f}")
+print(f"Cost Per Person: ${cost_per_person:,.2f}")
+print(f"Cost Per Day: ${cost_per_day:,.2f}")
+print()
+
+print("====================================")
+print("       BUDGET")
+print("====================================")
+print(f"Trip Budget: ${trip_budget:,.2f}")
+print(f"Budget Difference: ${budget_difference:,.2f}")
+
+#This part of the code means if budget_difference is greater than or equal to 0...
+if budget_difference >= 0:
+    print(f"You are within your budget! You have ${budget_difference:,.2f} left.")
+else:
+    print(f"You have exceeded your budget by ${abs(budget_difference):,.2f}.")
+
+#if or else are used to make decision if the code is positive or negative.
+#If it is a positive number, it will print the first statement. If it is a negative number, it will print the second statement.
+
+print()
+print("Thank you for using the Disneyland Trip Calculator!")
+print("Have a magical trip!")
